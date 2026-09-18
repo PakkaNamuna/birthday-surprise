@@ -1,0 +1,3372 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #080507;
+}
+
+.birthday-app {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: "DM Sans", sans-serif;
+  color: #fff;
+}
+
+.intro-screen,
+.next-screen {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(145, 31, 70, 0.18),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 105, 160, 0.06),
+      transparent 30%
+    ),
+    #080507;
+}
+
+/* -------------------------
+   CONTENT
+------------------------- */
+
+.intro-content {
+  position: relative;
+  z-index: 5;
+
+  width: 100%;
+  max-width: 600px;
+
+  text-align: center;
+
+  padding: 30px;
+}
+
+.small-text {
+  margin: 0;
+
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 4px;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  text-transform: lowercase;
+}
+
+h1 {
+  margin: 8px 0 0;
+
+  font-family: "Caveat", cursive;
+
+  font-size: clamp(70px, 12vw, 125px);
+  font-weight: 500;
+
+  line-height: 0.9;
+
+  color: #fff;
+
+  text-shadow:
+    0 0 20px rgba(255, 120, 170, 0.2),
+    0 0 60px rgba(255, 70, 130, 0.1);
+}
+
+.instruction {
+  margin-top: 35px;
+
+  font-size: 12px;
+  letter-spacing: 3px;
+
+  color: rgba(255, 255, 255, 0.4);
+
+  text-transform: uppercase;
+}
+
+/* -------------------------
+   HEART
+------------------------- */
+
+.heart-area {
+  position: relative;
+
+  width: 120px;
+  height: 170px;
+
+  margin: 20px auto 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: grab;
+
+  touch-action: none;
+}
+
+.heart {
+  position: relative;
+  z-index: 3;
+
+  font-size: 70px;
+
+  user-select: none;
+
+  filter:
+    drop-shadow(0 0 8px rgba(255, 70, 130, 0.8))
+    drop-shadow(0 0 30px rgba(255, 50, 120, 0.5));
+}
+
+.heart-glow {
+  position: absolute;
+
+  width: 80px;
+  height: 80px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 50, 120, 0.25);
+
+  filter: blur(30px);
+
+  animation: heartGlow 2s ease-in-out infinite;
+}
+
+.heart-line {
+  position: absolute;
+
+  top: -10px;
+
+  width: 1px;
+  height: 100px;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 100, 160, 0.6)
+  );
+
+  z-index: 1;
+}
+
+.drag-text {
+  margin-top: -15px;
+
+  font-size: 22px;
+
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* -------------------------
+   PARTICLES
+------------------------- */
+
+.particles {
+  position: absolute;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+
+  width: 2px;
+  height: 2px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.5);
+
+  animation: floatParticle linear infinite;
+}
+
+/* -------------------------
+   NEXT SCREEN
+------------------------- */
+
+.next-screen {
+  text-align: center;
+}
+
+.next-screen h2 {
+  margin: 15px 0;
+
+  font-family: "Caveat", cursive;
+
+  font-size: clamp(50px, 8vw, 90px);
+
+  font-weight: 500;
+}
+
+.next-description {
+  color: rgba(255, 255, 255, 0.55);
+
+  font-size: 15px;
+
+  letter-spacing: 1px;
+}
+
+/* -------------------------
+   ANIMATIONS
+------------------------- */
+
+@keyframes heartGlow {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 0.9;
+  }
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.7;
+  }
+
+  80% {
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+}
+
+/* -------------------------
+   MOBILE
+------------------------- */
+
+@media (max-width: 600px) {
+  .intro-content {
+    padding: 20px;
+  }
+
+  .small-text {
+    font-size: 12px;
+    letter-spacing: 3px;
+  }
+
+  h1 {
+    font-size: 75px;
+  }
+
+  .heart-area {
+    margin-top: 15px;
+  }
+
+  .instruction {
+    margin-top: 25px;
+  }
+}
+
+/* =================================
+   CAKE SCREEN
+================================= */
+
+.cake-screen {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 55%,
+      rgba(255, 90, 150, 0.16),
+      transparent 35%
+    ),
+    #080507;
+
+  text-align: center;
+}
+
+
+/* =================================
+   CAKE CONTENT
+================================= */
+
+.cake-content {
+  position: relative;
+
+  z-index: 5;
+
+  width: 100%;
+  max-width: 650px;
+
+  padding: 30px;
+}
+
+
+.cake-small-text {
+  margin: 0;
+
+  font-size: 14px;
+
+  letter-spacing: 4px;
+
+  text-transform: lowercase;
+
+  color: rgba(255, 255, 255, 0.55);
+}
+
+
+.cake-title {
+  margin: 8px 0 45px;
+
+  font-family: "Caveat", cursive;
+
+  font-size: clamp(60px, 10vw, 100px);
+
+  font-weight: 500;
+
+  line-height: 0.9;
+
+  color: #ffffff;
+
+  text-shadow:
+    0 0 25px rgba(255, 90, 150, 0.3);
+}
+
+
+/* =================================
+   CAKE
+================================= */
+
+.cake-container {
+  position: relative;
+
+  width: 280px;
+
+  height: 250px;
+
+  margin: 0 auto;
+}
+
+
+/* Plate */
+
+.cake-plate {
+  position: absolute;
+
+  bottom: 15px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 270px;
+  height: 22px;
+
+  border-radius: 50%;
+
+  background: #d9b8c4;
+
+  box-shadow:
+    0 5px 25px rgba(255, 90, 150, 0.25);
+}
+
+
+/* Cake body */
+
+.cake-body {
+  position: absolute;
+
+  bottom: 35px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 220px;
+
+  height: 125px;
+}
+
+
+/* Cake layers */
+
+.cake-layer {
+  position: absolute;
+
+  left: 0;
+
+  width: 220px;
+
+  border-radius: 12px 12px 8px 8px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #ef9ab5,
+      #c96588
+    );
+
+  box-shadow:
+    inset 0 -10px 20px rgba(80, 0, 30, 0.15);
+}
+
+
+.layer-one {
+  bottom: 0;
+
+  height: 65px;
+}
+
+
+.layer-two {
+  bottom: 55px;
+
+  left: 10px;
+
+  width: 200px;
+
+  height: 60px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #f5b2c7,
+      #dc7899
+    );
+}
+
+
+/* Cake top */
+
+.cake-top {
+  position: absolute;
+
+  bottom: 145px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 200px;
+
+  height: 35px;
+
+  border-radius: 50%;
+
+  background: #f7c8d7;
+
+  box-shadow:
+    0 0 20px rgba(255, 130, 170, 0.25);
+}
+
+
+.cake-cream {
+  position: absolute;
+
+  top: 5px;
+  left: 15px;
+
+  width: 170px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  background: #fff0f5;
+}
+
+
+.cake-sprinkles {
+  position: absolute;
+
+  width: 100%;
+
+  top: 8px;
+
+  font-size: 9px;
+
+  color: #b84f75;
+}
+
+
+/* Cake drips */
+
+.cake-drip {
+  position: absolute;
+
+  top: 0;
+
+  width: 25px;
+
+  height: 35px;
+
+  border-radius: 0 0 15px 15px;
+
+  background: #fff0f5;
+}
+
+
+.drip-one {
+  left: 35px;
+}
+
+
+.drip-two {
+  left: 95px;
+
+  height: 45px;
+}
+
+
+.drip-three {
+  right: 35px;
+
+  height: 28px;
+}
+
+
+/* =================================
+   CANDLES
+================================= */
+
+.candles {
+  position: absolute;
+
+  z-index: 10;
+
+  bottom: 175px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  align-items: flex-end;
+
+  gap: 38px;
+}
+
+
+.candle {
+  position: relative;
+
+  width: 12px;
+
+  height: 55px;
+}
+
+
+.candle-stick {
+  position: absolute;
+
+  bottom: 0;
+
+  left: 2px;
+
+  width: 8px;
+
+  height: 42px;
+
+  border-radius: 3px;
+
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      #ffffff 0px,
+      #ffffff 5px,
+      #e884a5 5px,
+      #e884a5 9px
+    );
+}
+
+
+.flame {
+  position: absolute;
+
+  z-index: 5;
+
+  top: -28px;
+
+  left: -8px;
+
+  font-size: 22px;
+
+  filter:
+    drop-shadow(0 0 8px #ff8a3d)
+    drop-shadow(0 0 15px rgba(255, 90, 40, 0.5));
+}
+
+
+.candle-center {
+  height: 70px;
+}
+
+
+/* =================================
+   WISH TEXT
+================================= */
+
+.wish-text {
+  margin-top: 5px;
+
+  font-size: 13px;
+
+  letter-spacing: 1.5px;
+
+  color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* =================================
+   BUTTON
+================================= */
+
+.continue-button {
+  margin-top: 25px;
+
+  padding: 12px 25px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  border-radius: 50px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  color: rgba(255, 255, 255, 0.8);
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 12px;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+
+.continue-button:hover {
+  background: rgba(255, 120, 170, 0.12);
+
+  border-color: rgba(255, 120, 170, 0.4);
+
+  transform: translateY(-2px);
+}
+
+
+.continue-button span {
+  margin-left: 8px;
+
+  font-size: 15px;
+}
+
+
+/* =================================
+   DECORATIONS
+================================= */
+
+.cake-stars {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+}
+
+
+.cake-stars span {
+  position: absolute;
+
+  font-size: 18px;
+
+  color: rgba(255, 170, 200, 0.5);
+
+  animation: starFloat 4s ease-in-out infinite;
+}
+
+
+.cake-stars span:nth-child(1) {
+  top: 20%;
+  left: 20%;
+}
+
+
+.cake-stars span:nth-child(2) {
+  top: 30%;
+  right: 20%;
+}
+
+
+.cake-stars span:nth-child(3) {
+  bottom: 25%;
+  left: 15%;
+}
+
+
+.cake-stars span:nth-child(4) {
+  top: 15%;
+  right: 35%;
+}
+
+
+.cake-stars span:nth-child(5) {
+  bottom: 20%;
+  right: 15%;
+}
+
+
+@keyframes starFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(15deg);
+
+    opacity: 0.9;
+  }
+}
+
+
+/* =================================
+   BALLOON PLACEHOLDER
+================================= */
+
+.balloon-screen {
+  min-height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 90, 150, 0.15),
+      transparent 40%
+    ),
+    #080507;
+}
+
+
+.balloon-screen h2 {
+  margin: 15px 0;
+
+  font-family: "Caveat", cursive;
+
+  font-size: clamp(55px, 9vw, 100px);
+
+  font-weight: 500;
+}
+
+
+/* =================================
+   MOBILE CAKE
+================================= */
+
+@media (max-width: 600px) {
+
+  .cake-content {
+    padding: 20px;
+  }
+
+  .cake-title {
+    margin-bottom: 35px;
+  }
+
+  .cake-container {
+    transform: scale(0.85);
+  }
+
+  .wish-text {
+    margin-top: -5px;
+  }
+
+}
+
+/* =========================================
+   BALLOON SCREEN
+========================================= */
+
+.balloon-screen {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(255, 80, 150, 0.13),
+      transparent 38%
+    ),
+    #080507;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   BALLOON HEADING
+========================================= */
+
+.balloon-heading {
+  position: relative;
+
+  z-index: 20;
+
+  margin-top: 7vh;
+
+  padding: 0 20px;
+}
+
+
+.balloon-heading h2 {
+  margin: 8px 0;
+
+  font-family: "Caveat", cursive;
+
+  font-size: clamp(55px, 9vw, 100px);
+
+  line-height: 0.9;
+
+  font-weight: 500;
+
+  color: #ffffff;
+
+  text-shadow:
+    0 0 25px rgba(255, 100, 160, 0.25);
+}
+
+
+.balloon-instruction {
+  margin-top: 18px;
+
+  font-size: 12px;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.4);
+}
+
+
+/* =========================================
+   BALLOON AREA
+========================================= */
+
+.balloon-area {
+  position: relative;
+
+  width: min(900px, 95vw);
+
+  height: 62vh;
+
+  margin-top: 10px;
+}
+
+
+/* =========================================
+   BALLOONS
+========================================= */
+
+.balloon {
+  position: absolute;
+
+  width: 82px;
+  height: 105px;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50% 50% 48% 48%;
+
+  cursor: pointer;
+
+  transform-origin: center bottom;
+
+  box-shadow:
+    inset -12px -10px 20px rgba(0, 0, 0, 0.12),
+    inset 10px 8px 20px rgba(255, 255, 255, 0.15),
+    0 12px 30px rgba(0, 0, 0, 0.2);
+
+  z-index: 5;
+
+  outline: none;
+}
+
+
+.balloon::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: -7px;
+  left: 50%;
+
+  width: 0;
+  height: 0;
+
+  transform: translateX(-50%);
+
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+
+  border-top: 10px solid currentColor;
+}
+
+
+.balloon-knot {
+  position: absolute;
+
+  bottom: -12px;
+
+  left: 50%;
+
+  width: 12px;
+  height: 10px;
+
+  transform: translateX(-50%);
+
+  border-radius: 0 0 6px 6px;
+
+  background: inherit;
+}
+
+
+.balloon-string {
+  position: absolute;
+
+  top: 100%;
+  left: 50%;
+
+  width: 1px;
+  height: 150px;
+
+  transform: translateX(-50%);
+
+  background: rgba(255, 255, 255, 0.25);
+}
+
+
+.balloon-shine {
+  position: absolute;
+
+  top: 18px;
+  left: 18px;
+
+  width: 15px;
+  height: 27px;
+
+  border-radius: 50%;
+
+  transform: rotate(30deg);
+
+  background: rgba(255, 255, 255, 0.42);
+
+  filter: blur(1px);
+}
+
+
+/* =========================================
+   BALLOON COLORS
+========================================= */
+
+.balloon-pink {
+  color: #e66d9b;
+
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      #ffc3d9,
+      #e66d9b 55%,
+      #b63e6d
+    );
+}
+
+
+.balloon-purple {
+  color: #9a70d8;
+
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      #dbc8ff,
+      #9a70d8 55%,
+      #634096
+    );
+}
+
+
+.balloon-blue {
+  color: #629dd8;
+
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      #c4e4ff,
+      #629dd8 55%,
+      #38679d
+    );
+}
+
+
+.balloon-red {
+  color: #d85d73;
+
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      #ffc1ca,
+      #d85d73 55%,
+      #9d354a
+    );
+}
+
+
+.balloon-yellow {
+  color: #d4aa50;
+
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      #fff2b8,
+      #d4aa50 55%,
+      #99732c
+    );
+}
+
+
+/* =========================================
+   BALLOON MESSAGES
+========================================= */
+
+.balloon-message {
+  position: absolute;
+
+  transform: translate(-50%, -50%);
+
+  width: max-content;
+  max-width: 220px;
+
+  padding: 10px 16px;
+
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.07);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(12px);
+
+  color: rgba(255, 255, 255, 0.8);
+
+  font-size: 11px;
+
+  line-height: 1.4;
+
+  letter-spacing: 0.5px;
+
+  text-align: center;
+
+  z-index: 15;
+
+  pointer-events: none;
+
+  box-shadow:
+    0 5px 25px rgba(0, 0, 0, 0.2),
+    0 0 20px rgba(255, 100, 160, 0.08);
+}
+
+.balloon-message span {
+  margin-right: 7px;
+
+  color: rgba(255, 150, 190, 0.9);
+}
+
+
+.balloon-message {
+  position: absolute;
+
+  transform: translate(-50%, -50%);
+
+  width: max-content;
+  max-width: 220px;
+
+  padding: 10px 16px;
+
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.07);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(12px);
+
+  color: rgba(255, 255, 255, 0.8);
+
+  font-size: 11px;
+
+  line-height: 1.4;
+
+  letter-spacing: 0.5px;
+
+  text-align: center;
+
+  z-index: 15;
+
+  pointer-events: none;
+
+  box-shadow:
+    0 5px 25px rgba(0, 0, 0, 0.2),
+    0 0 20px rgba(255, 100, 160, 0.08);
+}
+
+.balloon-message span {
+  margin-right: 7px;
+
+  color: rgba(255, 150, 190, 0.9);
+}
+
+
+/* =========================================
+   COMPLETION
+========================================= */
+
+.balloon-complete {
+  position: absolute;
+
+  z-index: 30;
+
+  bottom: 7vh;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: min(450px, 90vw);
+
+  padding: 20px;
+}
+
+
+.complete-heart {
+  font-size: 35px;
+
+  animation: completePulse 1.5s ease-in-out infinite;
+}
+
+
+.balloon-complete h3 {
+  margin: 5px 0;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 48px;
+
+  font-weight: 500;
+}
+
+
+.balloon-complete p {
+  margin: 5px 0;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+
+  color: rgba(255, 255, 255, 0.5);
+}
+
+
+@keyframes completePulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+
+/* =========================================
+   BACKGROUND STARS
+========================================= */
+
+.balloon-background-stars {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+}
+
+
+.balloon-background-stars span {
+  position: absolute;
+
+  color: rgba(255, 180, 205, 0.4);
+
+  font-size: 18px;
+
+  animation: balloonStarFloat 4s ease-in-out infinite;
+}
+
+
+.balloon-background-stars span:nth-child(1) {
+  top: 15%;
+  left: 8%;
+}
+
+
+.balloon-background-stars span:nth-child(2) {
+  top: 25%;
+  right: 10%;
+}
+
+
+.balloon-background-stars span:nth-child(3) {
+  top: 45%;
+  left: 5%;
+}
+
+
+.balloon-background-stars span:nth-child(4) {
+  top: 55%;
+  right: 7%;
+}
+
+
+.balloon-background-stars span:nth-child(5) {
+  bottom: 20%;
+  left: 18%;
+}
+
+
+.balloon-background-stars span:nth-child(6) {
+  bottom: 15%;
+  right: 20%;
+}
+
+
+@keyframes balloonStarFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translateY(-15px);
+
+    opacity: 0.8;
+  }
+}
+
+
+/* =========================================
+   MEMORY PLACEHOLDER
+========================================= */
+
+.memory-placeholder {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 90, 150, 0.15),
+      transparent 40%
+    ),
+    #080507;
+}
+
+
+.memory-placeholder h2 {
+  margin: 10px 0;
+
+  font-family: "Caveat", cursive;
+
+  font-size: clamp(55px, 9vw, 100px);
+
+  font-weight: 500;
+}
+
+
+.memory-placeholder p:last-child {
+  color: rgba(255, 255, 255, 0.5);
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   MOBILE BALLOONS
+========================================= */
+
+@media (max-width: 600px) {
+
+  .balloon-heading {
+    margin-top: 5vh;
+  }
+
+  .balloon-heading h2 {
+    font-size: 62px;
+  }
+
+  .balloon-area {
+    height: 60vh;
+  }
+
+  .balloon {
+    width: 65px;
+    height: 84px;
+  }
+
+  .balloon-string {
+    height: 110px;
+  }
+
+  .balloon-message {
+    font-size: 10px;
+
+    max-width: 85vw;
+
+    white-space: normal;
+  }
+
+  .balloon-complete {
+    bottom: 3vh;
+  }
+
+}
+
+/* =========================================
+   MEMORY LANE
+========================================= */
+
+.memory-screen {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  padding: 60px 20px;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(255, 90, 150, 0.14),
+      transparent 38%
+    ),
+    #080507;
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.memory-heading {
+  position: relative;
+
+  z-index: 5;
+}
+
+
+.memory-heading h2 {
+  margin: 8px 0;
+
+  font-family: "Caveat", cursive;
+
+  font-size: clamp(65px, 10vw, 105px);
+
+  font-weight: 500;
+
+  line-height: 0.9;
+
+  color: #fff;
+
+  text-shadow:
+    0 0 25px rgba(255, 100, 160, 0.25);
+}
+
+
+.memory-subtitle {
+  margin-top: 18px;
+
+  font-size: 12px;
+
+  letter-spacing: 1px;
+
+  color: rgba(255, 255, 255, 0.45);
+}
+
+
+/* =========================================
+   CARD AREA
+========================================= */
+
+.memory-card-area {
+  position: relative;
+
+  width: min(380px, 90vw);
+
+  height: 430px;
+
+  margin-top: 30px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+
+/* =========================================
+   POLAROID CARD
+========================================= */
+
+.memory-card {
+  position: absolute;
+
+  width: 320px;
+
+  max-width: 85vw;
+
+  padding: 14px 14px 25px;
+
+  background: #f8f2eb;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.45),
+    0 0 25px rgba(255, 150, 190, 0.08);
+
+  color: #292124;
+}
+
+
+/* =========================================
+   PHOTO
+========================================= */
+
+.photo-frame {
+  width: 100%;
+
+  height: 320px;
+
+  overflow: hidden;
+
+  background: #ddd;
+}
+
+
+.photo-frame img {
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+/* =========================================
+   CAPTION
+========================================= */
+
+.photo-caption {
+  margin: 15px 5px 0;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 22px;
+
+  color: #4c3a40;
+}
+
+
+/* =========================================
+   CONTROLS
+========================================= */
+
+.memory-controls {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 25px;
+
+  margin-top: 10px;
+}
+
+
+.memory-arrow {
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  color: rgba(255, 255, 255, 0.8);
+
+  font-size: 18px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+
+.memory-arrow:hover:not(:disabled) {
+  transform: scale(1.08);
+
+  background: rgba(255, 120, 170, 0.1);
+}
+
+
+.memory-arrow:disabled {
+  opacity: 0.2;
+
+  cursor: default;
+}
+
+
+/* =========================================
+   DOTS
+========================================= */
+
+.memory-dots {
+  display: flex;
+
+  gap: 7px;
+}
+
+
+.memory-dot {
+  width: 6px;
+  height: 6px;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.25);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+
+.memory-dot.active {
+  transform: scale(1.5);
+
+  background: rgba(255, 140, 180, 0.9);
+}
+
+
+/* =========================================
+   CONTINUE
+========================================= */
+
+.memory-continue {
+  margin-top: 25px;
+}
+
+/* =========================================
+   PERSONAL LETTER
+========================================= */
+
+.letter-screen {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 60px 20px;
+
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(255, 90, 150, 0.12),
+      transparent 38%
+    ),
+    #080507;
+}
+
+
+/* =========================================
+   LETTER HEADING
+========================================= */
+
+.letter-heading {
+  text-align: center;
+
+  margin-bottom: 30px;
+}
+
+
+.letter-heading h2 {
+  margin: 8px 0;
+
+  font-family: "Caveat", cursive;
+
+  font-size: clamp(65px, 10vw, 105px);
+
+  font-weight: 500;
+
+  line-height: 0.9;
+
+  color: #fff;
+
+  text-shadow:
+    0 0 25px rgba(255, 100, 160, 0.25);
+}
+
+
+/* =========================================
+   PAPER
+========================================= */
+
+.letter-paper {
+  position: relative;
+
+  width: min(650px, 92vw);
+
+  min-height: 560px;
+
+  padding: 55px 60px 45px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fffaf2,
+      #f6eee3
+    );
+
+  color: #47373c;
+
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.45),
+    0 0 35px rgba(255, 160, 190, 0.08);
+
+  transform-origin: center;
+
+  border-radius: 2px;
+}
+
+
+/* subtle paper texture */
+
+.letter-paper::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.2;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 28px,
+      rgba(100, 70, 70, 0.08) 29px
+    );
+}
+
+
+/* =========================================
+   PAPER DECORATION
+========================================= */
+
+.paper-decoration {
+  position: absolute;
+
+  top: 20px;
+  right: 25px;
+
+  font-size: 22px;
+
+  color: #d77d9c;
+
+  opacity: 0.6;
+}
+
+
+/* =========================================
+   LETTER CONTENT
+========================================= */
+
+.letter-content {
+  position: relative;
+
+  z-index: 2;
+}
+
+
+.letter-content p {
+  margin: 0 0 22px;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 25px;
+
+  line-height: 1.35;
+
+  color: #47373c;
+}
+
+
+.letter-content p:first-child {
+  font-size: 32px;
+
+  margin-bottom: 30px;
+}
+
+
+.letter-content p:nth-last-child(2) {
+  margin-top: 35px;
+
+  margin-bottom: 5px;
+}
+
+
+.letter-content p:last-child {
+  font-size: 31px;
+
+  margin-bottom: 0;
+
+  color: #9e4f70;
+}
+
+
+/* =========================================
+   KEEP READING
+========================================= */
+
+.letter-next {
+  position: relative;
+
+  z-index: 3;
+
+  margin-top: 10px;
+
+  padding: 9px 18px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #9e6179;
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 11px;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+
+.letter-next:hover {
+  transform: translateY(3px);
+
+  opacity: 0.7;
+}
+
+
+.letter-next span {
+  display: inline-block;
+
+  margin-left: 8px;
+
+  animation: letterArrow 1.3s ease-in-out infinite;
+}
+
+
+@keyframes letterArrow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+
+/* =========================================
+   FINAL BUTTON
+========================================= */
+
+.letter-continue {
+  margin-top: 30px;
+
+  margin-bottom: 30px;
+}
+
+
+/* =========================================
+   MOBILE LETTER
+========================================= */
+
+@media (max-width: 600px) {
+
+  .letter-screen {
+    padding: 45px 15px;
+  }
+
+  .letter-heading h2 {
+    font-size: 70px;
+  }
+
+  .letter-paper {
+    width: 94vw;
+
+    min-height: 600px;
+
+    padding: 45px 30px 35px;
+  }
+
+  .letter-content p {
+    font-size: 21px;
+
+    margin-bottom: 18px;
+  }
+
+  .letter-content p:first-child {
+    font-size: 28px;
+  }
+
+}
+
+/* =========================================
+   PROPOSAL SCREEN
+========================================= */
+
+.proposal-screen {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(255, 40, 100, 0.18),
+      transparent 35%
+    ),
+    #080507;
+}
+
+
+/* =========================================
+   PROPOSAL CONTENT
+========================================= */
+
+.proposal-content {
+  position: relative;
+
+  z-index: 10;
+
+  width: min(650px, 90vw);
+
+  padding: 30px;
+}
+
+
+.proposal-intro {
+  margin: 0;
+
+  font-size: 13px;
+
+  letter-spacing: 4px;
+
+  color: rgba(255, 255, 255, 0.5);
+
+  text-transform: lowercase;
+}
+
+
+.proposal-content h2 {
+  margin: 12px 0;
+
+  font-family: "Caveat", cursive;
+
+  font-size: clamp(60px, 10vw, 105px);
+
+  line-height: 0.9;
+
+  font-weight: 500;
+
+  color: white;
+}
+
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.proposal-divider {
+  height: 1px;
+
+  margin: 25px auto;
+
+  background: rgba(255, 140, 180, 0.6);
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.proposal-message {
+  margin: 0;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+
+  letter-spacing: 0.5px;
+
+  color: rgba(255, 255, 255, 0.55);
+}
+
+
+/* =========================================
+   HEART
+========================================= */
+
+.proposal-heart {
+  margin: 30px auto 15px;
+
+  width: 80px;
+  height: 80px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+
+.proposal-heart span {
+  font-size: 65px;
+
+  filter:
+    drop-shadow(0 0 10px rgba(255, 50, 100, 0.8))
+    drop-shadow(0 0 35px rgba(255, 50, 100, 0.5));
+}
+
+
+/* =========================================
+   QUESTION
+========================================= */
+
+.proposal-question p {
+  margin: 0;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 30px;
+
+  color: rgba(255, 255, 255, 0.7);
+}
+
+
+.proposal-question h3 {
+  margin: 3px 0 0;
+
+  font-family: "Caveat", cursive;
+
+  font-size: clamp(48px, 8vw, 80px);
+
+  font-weight: 500;
+
+  color: #ffffff;
+
+  text-shadow:
+    0 0 25px rgba(255, 100, 150, 0.35);
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.proposal-buttons {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-top: 30px;
+}
+
+
+.yes-button,
+.think-button {
+  padding: 13px 27px;
+
+  border-radius: 50px;
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 12px;
+
+  letter-spacing: 1.5px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.yes-button {
+  border: none;
+
+  background: #e45d88;
+
+  color: white;
+
+  box-shadow:
+    0 8px 25px rgba(220, 70, 120, 0.3);
+}
+
+
+.think-button {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  background: rgba(255, 255, 255, 0.04);
+
+  color: rgba(255, 255, 255, 0.75);
+}
+
+
+.yes-button:hover,
+.think-button:hover {
+  transform: translateY(-3px);
+}
+
+
+/* =========================================
+   FLOATING HEARTS
+========================================= */
+
+.proposal-hearts {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+}
+
+
+.proposal-hearts span {
+  position: absolute;
+
+  color: rgba(255, 110, 160, 0.25);
+
+  font-size: 30px;
+
+  animation: floatingHeart 5s ease-in-out infinite;
+}
+
+
+.proposal-hearts span:nth-child(1) {
+  left: 10%;
+  top: 20%;
+}
+
+
+.proposal-hearts span:nth-child(2) {
+  left: 20%;
+  bottom: 20%;
+}
+
+
+.proposal-hearts span:nth-child(3) {
+  left: 80%;
+  top: 25%;
+}
+
+
+.proposal-hearts span:nth-child(4) {
+  right: 12%;
+  bottom: 18%;
+}
+
+
+.proposal-hearts span:nth-child(5) {
+  left: 7%;
+  top: 60%;
+}
+
+
+.proposal-hearts span:nth-child(6) {
+  right: 8%;
+  top: 55%;
+}
+
+
+@keyframes floatingHeart {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg);
+
+    opacity: 0.2;
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+
+    opacity: 0.6;
+  }
+}
+
+
+/* =========================================
+   YES SCREEN
+========================================= */
+
+.yes-screen {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 60, 120, 0.22),
+      transparent 40%
+    ),
+    #080507;
+}
+
+
+.yes-content {
+  position: relative;
+
+  z-index: 10;
+
+  padding: 30px;
+}
+
+
+.big-heart {
+  font-size: 90px;
+
+  filter:
+    drop-shadow(0 0 15px rgba(255, 60, 110, 0.8))
+    drop-shadow(0 0 40px rgba(255, 60, 110, 0.4));
+}
+
+
+.yes-small {
+  margin: 15px 0 0;
+
+  font-size: 13px;
+
+  letter-spacing: 3px;
+
+  color: rgba(255, 255, 255, 0.5);
+}
+
+
+.yes-content h2 {
+  margin: 5px 0 20px;
+
+  font-family: "Caveat", cursive;
+
+  font-size: clamp(65px, 11vw, 120px);
+
+  font-weight: 500;
+
+  line-height: 0.9;
+}
+
+
+.yes-message {
+  font-size: 14px;
+
+  line-height: 1.8;
+
+  color: rgba(255, 255, 255, 0.55);
+}
+
+
+.signature {
+  margin-top: 25px;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 30px;
+
+  color: rgba(255, 180, 205, 0.8);
+}
+
+
+/* =========================================
+   CONFETTI
+========================================= */
+
+.confetti {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  overflow: hidden;
+}
+
+
+.confetti span {
+  position: absolute;
+
+  top: -30px;
+
+  font-size: 18px;
+
+  color: rgba(255, 150, 190, 0.8);
+
+  animation: confettiFall linear infinite;
+}
+
+
+@keyframes confettiFall {
+
+  0% {
+    transform:
+      translateY(-30px)
+      rotate(0deg);
+
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      translateY(110vh)
+      rotate(360deg);
+
+    opacity: 0;
+  }
+
+}
+
+
+/* =========================================
+   THINK SCREEN
+========================================= */
+
+.think-screen {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 100, 160, 0.12),
+      transparent 40%
+    ),
+    #080507;
+}
+
+
+.think-content {
+  padding: 30px;
+}
+
+
+.think-heart {
+  font-size: 70px;
+
+  margin-bottom: 10px;
+}
+
+
+.think-content h2 {
+  margin: 0;
+
+  font-family: "Caveat", cursive;
+
+  font-size: clamp(65px, 10vw, 100px);
+
+  font-weight: 500;
+}
+
+
+.think-content p {
+  margin: 15px 0 25px;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+
+  color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* =========================================
+   MOBILE PROPOSAL
+========================================= */
+
+@media (max-width: 600px) {
+
+  .proposal-content {
+    padding: 20px;
+  }
+
+  .proposal-message {
+    font-size: 13px;
+  }
+
+  .proposal-buttons {
+    flex-direction: column;
+  }
+
+  .yes-button,
+  .think-button {
+    width: 180px;
+  }
+
+  .big-heart {
+    font-size: 75px;
+  }
+
+}
+
+/* MUSIC BUTTON */
+
+.music-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.music-button:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* =========================
+   PROFESSIONAL MEMORY CARDS
+   ========================= */
+
+.memory-screen {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(255, 100, 160, 0.08), transparent 40%),
+    #080507;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.memory-screen h2 {
+  margin: 0 0 8px;
+  font-family: "Caveat", cursive;
+  font-size: 42px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.memory-screen > p {
+  margin: 0 0 30px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.memory-card {
+  position: relative;
+  width: min(360px, 82vw);
+  padding: 14px 14px 22px;
+  background: #f7f3ef;
+  border-radius: 3px;
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.55),
+    0 0 40px rgba(255, 100, 160, 0.08);
+  transform: rotate(-1deg);
+}
+
+.memory-card:nth-child(even) {
+  transform: rotate(1deg);
+}
+
+.photo-frame {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #ddd;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.photo-frame:hover img {
+  transform: scale(1.04);
+}
+
+.memory-caption {
+  margin-top: 14px;
+  text-align: center;
+  color: #292126;
+  font-family: "Caveat", cursive;
+  font-size: 23px;
+}
+
+.memory-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 28px;
+}
+
+.memory-controls button {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.memory-controls button:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.memory-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.memory-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  transition: all 0.3s ease;
+}
+
+.memory-dot.active {
+  width: 18px;
+  border-radius: 10px;
+  background: rgba(255, 150, 190, 0.9);
+}
+
+.memory-next {
+  margin-top: 28px;
+  padding: 12px 24px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 150, 190, 0.25);
+  background: rgba(255, 100, 160, 0.08);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.memory-next:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 100, 160, 0.14);
+}
+
+@media (max-width: 600px) {
+  .memory-screen h2 {
+    font-size: 34px;
+  }
+
+  .memory-card {
+    width: min(330px, 82vw);
+  }
+
+  .memory-caption {
+    font-size: 21px;
+  }
+}
+
+/* =========================
+   CINEMATIC LOVE LETTER
+   ========================= */
+
+.letter-screen {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(255, 120, 170, 0.09),
+      transparent 45%
+    ),
+    #080507;
+}
+
+.letter-screen::before {
+  content: "♥";
+  position: absolute;
+  top: 12%;
+  left: 10%;
+  font-size: 70px;
+  color: rgba(255, 120, 170, 0.04);
+  transform: rotate(-20deg);
+}
+
+.letter-screen::after {
+  content: "♥";
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+  font-size: 90px;
+  color: rgba(255, 120, 170, 0.04);
+  transform: rotate(20deg);
+}
+
+.letter-paper {
+  position: relative;
+  width: min(620px, 88vw);
+  min-height: 620px;
+  padding: 55px 48px;
+  box-sizing: border-box;
+
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.96),
+      rgba(248, 241, 235, 0.96)
+    );
+
+  border-radius: 3px;
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.65),
+    0 0 70px rgba(255, 120, 170, 0.08);
+
+  color: #292126;
+  transform: rotate(-0.5deg);
+}
+
+.letter-paper::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(120, 80, 80, 0.12);
+  pointer-events: none;
+}
+
+.letter-content {
+  position: relative;
+  z-index: 2;
+}
+
+.letter-content p {
+  margin: 0 0 20px;
+  font-family: "Caveat", cursive;
+  font-size: 24px;
+  line-height: 1.55;
+  color: #30252b;
+}
+
+.letter-content p:first-child {
+  font-size: 32px;
+  margin-bottom: 28px;
+}
+
+.letter-next {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 11px 22px;
+
+  border: none;
+  border-radius: 30px;
+
+  background: #30252b;
+  color: white;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.letter-next:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(48, 37, 43, 0.25);
+}
+
+.letter-continue {
+  display: block;
+  margin: 35px auto 0;
+  padding: 13px 28px;
+
+  border: 1px solid rgba(255, 150, 190, 0.35);
+  border-radius: 30px;
+
+  background: rgba(255, 120, 170, 0.08);
+  color: rgba(255, 255, 255, 0.85);
+
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.letter-continue:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 120, 170, 0.14);
+}
+
+@media (max-width: 600px) {
+  .letter-paper {
+    min-height: auto;
+    padding: 42px 30px;
+  }
+
+  .letter-content p {
+    font-size: 21px;
+  }
+
+  .letter-content p:first-child {
+    font-size: 28px;
+  }
+}
+
+/* =========================
+   CINEMATIC PROPOSAL
+   ========================= */
+
+.proposal-screen {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255, 80, 150, 0.13),
+      transparent 45%
+    ),
+    #080507;
+}
+
+.proposal-screen::before,
+.proposal-screen::after {
+  content: "♥";
+  position: absolute;
+  color: rgba(255, 120, 170, 0.05);
+  pointer-events: none;
+}
+
+.proposal-screen::before {
+  top: 12%;
+  left: 12%;
+  font-size: 100px;
+  transform: rotate(-25deg);
+}
+
+.proposal-screen::after {
+  bottom: 10%;
+  right: 12%;
+  font-size: 130px;
+  transform: rotate(25deg);
+}
+
+.proposal-content {
+  position: relative;
+  z-index: 5;
+  width: min(650px, 90vw);
+  text-align: center;
+}
+
+.proposal-content p {
+  margin: 0 0 20px;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.proposal-content h2 {
+  margin: 0;
+  font-family: "Caveat", cursive;
+  font-size: clamp(42px, 8vw, 72px);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.proposal-content .proposal-question {
+  margin-top: 35px;
+  margin-bottom: 35px;
+  font-family: "Caveat", cursive;
+  font-size: clamp(48px, 9vw, 82px);
+  line-height: 1;
+  color: #ffffff;
+  text-shadow:
+    0 0 20px rgba(255, 100, 160, 0.35),
+    0 0 60px rgba(255, 100, 160, 0.15);
+}
+
+.proposal-heart {
+  display: inline-block;
+  margin: 25px 0;
+  font-size: 55px;
+  filter: drop-shadow(
+    0 0 20px rgba(255, 80, 150, 0.45)
+  );
+}
+
+.proposal-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 35px;
+}
+
+.proposal-buttons button {
+  padding: 13px 28px;
+  border-radius: 30px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.proposal-buttons button:first-child {
+  border: 1px solid rgba(255, 130, 180, 0.5);
+  background: rgba(255, 90, 150, 0.15);
+  color: white;
+  box-shadow: 0 0 25px rgba(255, 90, 150, 0.08);
+}
+
+.proposal-buttons button:first-child:hover {
+  transform: translateY(-3px) scale(1.04);
+  background: rgba(255, 90, 150, 0.25);
+  box-shadow: 0 10px 35px rgba(255, 90, 150, 0.18);
+}
+
+.proposal-buttons button:last-child {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.proposal-buttons button:last-child:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+@media (max-width: 600px) {
+  .proposal-content p {
+    letter-spacing: 2px;
+  }
+
+  .proposal-buttons {
+    flex-direction: column;
+  }
+
+  .proposal-buttons button {
+    width: 190px;
+  }
+}
+
+/* =========================
+   YES / CELEBRATION SCREEN
+   ========================= */
+
+.yes-screen {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255, 80, 150, 0.18),
+      transparent 50%
+    ),
+    #080507;
+}
+
+.yes-content {
+  position: relative;
+  z-index: 10;
+  width: min(650px, 90vw);
+  text-align: center;
+}
+
+.yes-heart {
+  font-size: 75px;
+  margin-bottom: 25px;
+  filter: drop-shadow(
+    0 0 30px rgba(255, 80, 150, 0.55)
+  );
+}
+
+.yes-content h2 {
+  margin: 0 0 20px;
+  font-family: "Caveat", cursive;
+  font-size: clamp(42px, 8vw, 70px);
+  font-weight: 400;
+  color: white;
+}
+
+.yes-content p {
+  margin: 10px auto;
+  max-width: 500px;
+  font-family: "Caveat", cursive;
+  font-size: 25px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.yes-signature {
+  margin-top: 35px !important;
+  font-size: 30px !important;
+  color: rgba(255, 150, 190, 0.9) !important;
+}
+
+/* Floating hearts */
+
+.floating-heart {
+  position: absolute;
+  bottom: -50px;
+  font-size: 22px;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* Confetti */
+
+.confetti {
+  position: absolute;
+  top: -20px;
+  width: 7px;
+  height: 14px;
+  border-radius: 2px;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+  .yes-heart {
+    font-size: 60px;
+  }
+
+  .yes-content p {
+    font-size: 22px;
+  }
+
+  .yes-signature {
+    font-size: 27px !important;
+  }
+}
+
+/* =========================
+   AMBIENT PARTICLES
+   ========================= */
+
+.ambient-particles {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ambient-particle {
+  position: absolute;
+  bottom: -30px;
+  font-size: 13px;
+  color: rgba(255, 150, 190, 0.28);
+  text-shadow: 0 0 12px rgba(255, 100, 160, 0.35);
+}
+
+/* =========================
+   FINAL MOBILE POLISH
+   ========================= */
+
+@media (max-width: 600px) {
+
+  /* General */
+
+  .music-button {
+    top: 14px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+
+  /* Intro */
+
+  .intro-content {
+    width: 90vw;
+  }
+
+  /* Cake */
+
+  .cake-screen {
+    padding: 20px;
+  }
+
+  /* Balloons */
+
+  .balloon-screen {
+    min-height: 100svh;
+    overflow: hidden;
+  }
+
+  .balloon {
+    transform: scale(0.82);
+  }
+
+  .balloon-message {
+    max-width: 170px;
+    font-size: 10px;
+    padding: 8px 12px;
+  }
+
+  /* Memories */
+
+  .memory-screen {
+    min-height: 100svh;
+    padding-top: 70px;
+    padding-bottom: 35px;
+  }
+
+  .memory-card {
+    max-height: 68vh;
+  }
+
+  .photo-frame {
+    max-height: 55vh;
+  }
+
+  /* Letter */
+
+  .letter-screen {
+    min-height: 100svh;
+    padding: 65px 15px 35px;
+  }
+
+  .letter-paper {
+    width: 94vw;
+    max-height: 78vh;
+    overflow-y: auto;
+    padding: 38px 25px;
+  }
+
+  .letter-paper::before {
+    inset: 12px;
+  }
+
+  .letter-content p {
+    font-size: 20px;
+    line-height: 1.45;
+  }
+
+  .letter-content p:first-child {
+    font-size: 28px;
+  }
+
+  /* Proposal */
+
+  .proposal-screen {
+    min-height: 100svh;
+    padding: 30px 20px;
+  }
+
+  .proposal-content {
+    width: 90vw;
+  }
+
+  .proposal-content h2 {
+    font-size: 46px;
+  }
+
+  .proposal-content .proposal-question {
+    font-size: 55px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+
+  /* YES */
+
+  .yes-screen {
+    min-height: 100svh;
+    padding: 30px 20px;
+  }
+
+  .yes-content {
+    width: 90vw;
+  }
+
+  /* Think */
+
+  .think-screen {
+    min-height: 100svh;
+    padding: 30px 20px;
+  }
+}
+
+/* ==============================
+   FINAL MOBILE BALLOON LAYOUT
+   ============================== */
+
+@media (max-width: 600px) {
+
+  .balloon-screen {
+    position: fixed !important;
+    inset: 0 !important;
+
+    width: 100vw !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+
+    height: 100svh !important;
+    min-height: 100svh !important;
+
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Keep the balloon messages completely inside
+     the phone viewport */
+
+  .balloon-message {
+    position: fixed !important;
+
+    left: 12px !important;
+
+    width: calc(100vw - 24px) !important;
+    max-width: none !important;
+
+    box-sizing: border-box !important;
+
+    padding: 9px 14px !important;
+
+    font-size: 10px !important;
+    line-height: 1.35 !important;
+
+    text-align: center !important;
+
+    transform: none !important;
+
+    z-index: 100 !important;
+
+    white-space: normal !important;
+
+    overflow-wrap: break-word !important;
+  }
+
+  /* Stack the five messages */
+
+  .balloon-message {
+    top: calc(
+      47vh + (var(--message-index) * 46px)
+    ) !important;
+  }
+
+  .balloon-message span {
+    margin-right: 5px;
+  }
+
+  /* Keep the success message inside the phone */
+
+  .balloon-screen .balloon-success {
+    max-width: 90vw !important;
+    width: 90vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+}
+
+/* =================================
+   FINAL FIX - BALLOON COMPLETE
+   ================================= */
+
+@media (max-width: 600px) {
+
+  .balloon-complete {
+    position: fixed !important;
+
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100svh !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    box-sizing: border-box !important;
+
+    margin: 0 !important;
+    padding: 20px !important;
+
+    text-align: center !important;
+
+    z-index: 200 !important;
+  }
+
+  .balloon-complete .balloon-success {
+    position: static !important;
+
+    width: 100% !important;
+    max-width: 340px !important;
+
+    margin: 0 auto !important;
+    padding: 0 !important;
+
+    transform: none !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    text-align: center !important;
+  }
+
+  .balloon-complete .complete-heart {
+    position: static !important;
+
+    margin: 0 auto 15px !important;
+
+    transform: none !important;
+  }
+
+  .balloon-complete h3 {
+    position: static !important;
+
+    width: 100% !important;
+
+    margin: 0 auto 12px !important;
+
+    font-size: 52px !important;
+    line-height: 1 !important;
+
+    text-align: center !important;
+
+    white-space: nowrap !important;
+  }
+
+  .balloon-complete p {
+    position: static !important;
+
+    width: 100% !important;
+    max-width: 300px !important;
+
+    margin: 0 auto 25px !important;
+
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+
+    text-align: center !important;
+  }
+
+  .balloon-complete .continue-button {
+    position: static !important;
+
+    display: flex !important;
+
+    margin: 0 auto !important;
+  }
+}
