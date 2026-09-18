@@ -5,23 +5,23 @@ import config from "./config";
 
 const memories = [
   {
-    image: "/memories/photo1.jpg",
+    image: `${import.meta.env.BASE_URL}memories/photo1.jpg`,
     caption: "a beautiful moment ✨",
   },
   {
-    image: "/memories/photo2.jpg",
+    image: `${import.meta.env.BASE_URL}memories/photo2.jpg`,
     caption: "one of my favorite memories ❤️",
   },
   {
-    image: "/memories/photo3.jpg",
+    image: `${import.meta.env.BASE_URL}memories/photo3.jpg`,
     caption: "just us being us",
   },
   {
-    image: "/memories/photo4.jpg",
+    image: `${import.meta.env.BASE_URL}memories/photo4.jpg`,
     caption: "another memory worth keeping",
   },
   {
-    image: "/memories/photo5.jpg",
+    image: `${import.meta.env.BASE_URL}memories/photo5.jpg`,
     caption: "and there are many more...",
   },
 ];
@@ -141,7 +141,7 @@ const toggleMusic = () => {
 
         <audio
   ref={audioRef}
-  src="/music/birthday.mp3"
+  src={`${import.meta.env.BASE_URL}music/birthday.mp3`}
   loop
 />
 
